@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://yoksel.github.io/html-tree/en/ -->
+<html class="gnr-html" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>HTML Tree Extractor</title>
+  <meta name="description" content="Tool shows tree for given HTML markup. As a bonus it checks BEM notation and headers hierarchy.">
+
+  <meta property="og:title" content="HTML Tree Generator">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/nutv99/">
+  <meta property="og:description" content="Tool shows tree for given HTML markup. As a bonus it checks BEM notation and headers hierarchy.">
+
+  <link rel="stylesheet" href="styles.css">
+
+<style>.gnr-level--6 { display: none }</style></head>
+<body class="gnr-body">
+  <div class="gnr-page">
+    <header class="gnr-page__header">
+      <h1 class="gnr-page__title">HTML Tree Generator</h1>
+
+       
+    </header>
+
+    <div class="gnr-page__container">
+      <div class="gnr-column">
+        <h2 class="gnr-column__title">Input HTML:</h2>
+		<ol>
+		 <li> นำค่า html มาใส่ </li>
+		 <li>ลงไป บรรทัดล่าง ป้อนค่า ชื่อ dom และ url </li>
+		 <li>ทำการ กดบันทึก ระบบจะบันทึกไปที่   devshop->HeadPageComponent,PageComponent และลง Local Storage </li>
+		 <li> </li>
+		</ol>
+		<button type='button' id='' class='mBtn' onclick="ClearTxt()">Clear Txt</button>
+		<button type='button' id='' class='mBtn' onclick="getLocalData()">ดึงค่าเก่า</button>
+        <textarea class="gnr-code-input" cols="30" rows="10" id='txtHtml' spellcheck="false"></textarea>
+
+        <div class="gnr-deep">
+          <h3 class="gnr-deep__title">
+            Levels:
+            <span class="gnr-deep__digit">6</span>
+          </h3>
+          <input class="gnr-deep__range" type="range" min="1" max="16" value="1">
+        </div>
+
+        <div class="gnr-messages">
+          <div class="gnr-message gnr-message--bem">
+            <div class="gnr-message__content">
+              It seems like classes use BEM notation, but something went wrong.
+            </div>
+          </div>
+          <div class="gnr-message gnr-message--headers gnr-hidden">
+            <div class="gnr-message__content" data-text="Headers: "></div>
+          </div>
+
+          <div class="gnr-message gnr-message--headers-tree">
+            <h2 class="gnr-column__title">Headers tree:</h2>
+            <div class="gnr-message__content gnr-message__content--headers-tree"><h2><span>H2</span> 
+จำหน่ายบุหรี่นอกราคาปลีก-ส่ง </h2></div>
+          </div>
+          </div>
+		  <div class="gnr-message gnr-message--headers-tree">
+            <h2 class="gnr-column__title">Data ID tree:</h2>
+			<div id="" class="bordergray flex" style='width:100%;border:1px solid gray;padding:10px; overflow-wrap: break-word;'>
+			  URL :: <input type="text" id="sourceurl">
+			  DOM Name:: <input type="text" id="treename">
+
+
+			  <button type='button' id='' class='mBtn' onclick="MainAjaxSaveTreeData()">บันทึก</button>
+			   
+			</div>
+			<div id="dataTree" class="bordergray flex" style='width:100%;border:1px solid gray;padding:10px; overflow-wrap: break-word;'>			   
+			</div>
+
+          </div> 
+      </div>
+      <div class="gnr-column">
+        <h2 class="gnr-column__title">Markup tree:</h2>
+        <div class="gnr-tree">
+          <div class="gnr-tree__content"><ul class="gnr-level gnr-level--0"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">BODY</span></div><ul class="gnr-level gnr-level--1"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SECTION</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-section</span> <span class="gnr-class__item">elementor-top-section</span> <span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-1d2a8b8</span> <span class="gnr-class__item gnr-highlight-bem">elementor-section-full_width</span> <span class="gnr-class__item" data-color="aqua">elementor-section-stretched</span> <span class="gnr-class__item">elementor-hidden-tablet</span> <span class="gnr-class__item">elementor-hidden-mobile</span> <span class="gnr-class__item">elementor-section-height-default</span></span></div><ul class="gnr-level gnr-level--2"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-container</span> <span class="gnr-class__item">elementor-column-gap-no</span></span></div><ul class="gnr-level gnr-level--3"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-column</span> <span class="gnr-class__item">elementor-col-50</span> <span class="gnr-class__item">elementor-top-column</span> <span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-4d36b32</span></span></div><ul class="gnr-level gnr-level--4"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-wrap</span> <span class="gnr-class__item">elementor-element-populated</span></span></div><ul class="gnr-level gnr-level--5"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-39069cd</span> <span class="gnr-class__item">elementor-widget</span> <span class="gnr-class__item">elementor-widget-heading</span></span></div><ul class="gnr-level gnr-level--6"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-container</span></span></div><ul class="gnr-level gnr-level--7"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">STYLE</span></div></li><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">H2</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-heading-title</span> <span class="gnr-class__item">elementor-size-default</span></span></div><ul class="gnr-level gnr-level--8"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">IMG</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">emoji</span></span></div></li></ul></li></ul></li></ul></li></ul></li></ul></li><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-column</span> <span class="gnr-class__item">elementor-col-50</span> <span class="gnr-class__item">elementor-top-column</span> <span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-1ae796d</span></span></div><ul class="gnr-level gnr-level--4"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-wrap</span> <span class="gnr-class__item">elementor-element-populated</span></span></div><ul class="gnr-level gnr-level--5"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SECTION</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-section</span> <span class="gnr-class__item">elementor-inner-section</span> <span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-2ac4581</span> <span class="gnr-class__item">elementor-section-boxed</span> <span class="gnr-class__item">elementor-section-height-default</span></span></div><ul class="gnr-level gnr-level--6"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-container</span> <span class="gnr-class__item">elementor-column-gap-default</span></span></div><ul class="gnr-level gnr-level--7"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-column</span> <span class="gnr-class__item">elementor-col-50</span> <span class="gnr-class__item">elementor-inner-column</span> <span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-2304682</span></span></div><ul class="gnr-level gnr-level--8"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-wrap</span> <span class="gnr-class__item">elementor-element-populated</span></span></div><ul class="gnr-level gnr-level--9"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-f29073f</span> <span class="gnr-class__item">elementor-align-right</span> <span class="gnr-class__item">elementor-widget</span> <span class="gnr-class__item">elementor-widget-button</span></span></div><ul class="gnr-level gnr-level--10"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-container</span></span></div><ul class="gnr-level gnr-level--11"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-wrapper</span></span></div><ul class="gnr-level gnr-level--12"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">A</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-link</span> <span class="gnr-class__item">elementor-button</span> <span class="gnr-class__item">elementor-size-xs</span> <span class="gnr-class__item">elementor-animation-grow</span></span></div><ul class="gnr-level gnr-level--13"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SPAN</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-content-wrapper</span></span></div><ul class="gnr-level gnr-level--14"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SPAN</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-icon</span> <span class="gnr-class__item">elementor-align-icon-left</span></span></div><ul class="gnr-level gnr-level--15"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">I</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">fab</span> <span class="gnr-class__item">fa-line</span></span></div></li></ul></li><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SPAN</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-text</span></span></div></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-column</span> <span class="gnr-class__item">elementor-col-50</span> <span class="gnr-class__item">elementor-inner-column</span> <span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-5fcf8d1</span></span></div><ul class="gnr-level gnr-level--8"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-wrap</span> <span class="gnr-class__item">elementor-element-populated</span></span></div><ul class="gnr-level gnr-level--9"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-element</span> <span class="gnr-class__item">elementor-element-9bc6746</span> <span class="gnr-class__item">elementor-align-left</span> <span class="gnr-class__item">elementor-widget</span> <span class="gnr-class__item">elementor-widget-button</span></span></div><ul class="gnr-level gnr-level--10"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-widget-container</span></span></div><ul class="gnr-level gnr-level--11"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">DIV</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-wrapper</span></span></div><ul class="gnr-level gnr-level--12"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">A</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-link</span> <span class="gnr-class__item">elementor-button</span> <span class="gnr-class__item">elementor-size-xs</span> <span class="gnr-class__item">elementor-animation-grow</span></span></div><ul class="gnr-level gnr-level--13"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SPAN</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-content-wrapper</span></span></div><ul class="gnr-level gnr-level--14"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SPAN</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-icon</span> <span class="gnr-class__item">elementor-align-icon-left</span></span></div><ul class="gnr-level gnr-level--15"><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">I</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">fab</span> <span class="gnr-class__item">fa-facebook-square</span></span></div></li></ul></li><li class="gnr-level__item"><div class="gnr-level__elem gnr-elem"><span class="gnr-elem__tag">SPAN</span><span class="gnr-class__dot">.</span><span class="gnr-elem__class gnr-class"><span class="gnr-class__item">elementor-button-text</span></span></div></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></div>
+          <div class="gnr-tree__placeholder gnr-hidden">
+            <p>To see markup tree, add HTML to textarea on the left.</p><p>You can add whole page or particular blocks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="gnr-page__footer">
+      <a href="https://github.com/nutv99/html-tree/">Project on  GitHub</a>
+      <a href="https://twitter.com/yoksel_en">@nutv99</a>
+    </footer>
+  </div>
+
+  <script async="" src="tag.js"></script>
+  <script src="script.js"></script>
+
+   
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(44819299, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/44819299" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+
+</body></html>
